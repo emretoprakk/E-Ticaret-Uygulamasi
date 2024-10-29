@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Sıkça Sorulan Sorular</h2>
+
+    <form [formGroup]="FAQForm" (ngSubmit)="postFAQ()">
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Soru</mat-label>
+            <textarea matInput placeholder="Question" formControlName="question"></textarea>
+            <mat-error *ngIf="FAQForm.get('question')?.hasError('required')">Bu Alan Boş Bırakılamaz!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Cevap</mat-label>
+            <textarea matInput placeholder="Answer" formControlName="answer"></textarea>
+            <mat-error *ngIf="FAQForm.get('answer')?.hasError('required')">Bu Alan Boş Bırakılamaz!</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Gönder SSS</button>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+<mat-toolbar color="primary" class="navbar">
+  <span class="navbar-brand">Toprak Shop</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/gemini" routerLinkActive="active">ChatBot</button>
+  <button mat-button routerLink="/order" routerLinkActive="active">Sipariş Takip</button>
+  <button mat-button routerLink="/signup" routerLinkActive="active">Üye Ol</button>
+  <button mat-button routerLink="/login" routerLinkActive="active">Giriş</button>
+  
+</mat-toolbar>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Toprak Shop</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Anasayfa</button>
+    <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analizler</button>
+    <button mat-button routerLink="/admin/category" routerLinkActive="active">Kategori</button>
+    <button mat-button routerLink="/admin/product" routerLinkActive="active">Ürün</button>
+    <button mat-button routerLink="/admin/orders" routerLinkActive="active">Siparişler</button>
+    <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Kupon Ekle</button>
+    <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Kuponlar</button>
+    <button mat-button routerLinkActive="active" (click)="logout()">Çıkış</button>
+  </mat-toolbar>
+  </div>
+
+  <div *ngIf="isCustomerLoggedIn">
+    <mat-toolbar color="primary" class="navbar">
+      <span class="navbar-brand">Toprak Shop</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/customer/dashboard" routerLinkActive="active">Anasayfa</button>
+      <button mat-button routerLink="/customer/cart" routerLinkActive="active">Sepet</button>
+      <button mat-button routerLink="/customer/my_orders" routerLinkActive="active">Siparişlerim</button>
+      <button mat-button routerLink="/customer/wishlist" routerLinkActive="active">Favoriler</button>
+      <button mat-button routerLink="/customer/profile" routerLinkActive="active">Profil</button>
+      <button mat-button routerLinkActive="active" (click)="logout()">Çıkış</button>
+    </mat-toolbar>
+    </div>
+
+<router-outlet></router-outlet>

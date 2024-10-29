@@ -1,0 +1,49 @@
+<form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input" floatLabel="always">
+        <mat-label>Arama anahtar kelimesini girin</mat-label>
+        <input matInput formControlName="title">
+
+        <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+    <button mat-icon-button color="accent" class="voice-search-button" (click)="startVoiceRecognition()">
+        <mat-icon>{{ isListening ? 'mic_off' : 'mic' }}</mat-icon>
+    </button>
+</form>
+
+<div class="product-list">
+    <mat-card class="product-card" *ngFor="let product of products">
+        <div class="product-image">
+            <img [src]="product.processedImg" alt="product-image">
+        </div>
+        <div class="product-details">
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-description">{{ product.description }}</p>
+
+            <mat-divider></mat-divider>
+
+            <div class="product-info">
+                <div class="info-row">
+                    <span class="info-label">Fiyat:</span>
+                    <span class="info-value">{{ product.price | currency:'TRY':'symbol'}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Kategori:</span>
+                    <span class="info-value">{{ product.categoryName }}</span>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
+            <div class="actions">
+
+                <button mat-raised-button color="primary" class="update-button"
+                    [routerLink]="'/admin/faq' + product.id">SSS</button>
+                <button mat-raised-button color="accent" class="update-button"
+                    [routerLink]="'/admin/product' + product.id">Güncelle</button>
+                <button mat-raised-button color="warn" class="delete-button" (click)="deleteProduct(product.id)">Sil</button>
+     
+            </div>
+        </div>
+    </mat-card>
+</div>

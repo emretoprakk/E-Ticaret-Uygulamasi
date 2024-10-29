@@ -1,0 +1,42 @@
+<div style="padding: 30px;">
+
+    <app-order-by-status [data]="data"></app-order-by-status>
+</div>
+
+<div class="analytics-container">
+    <mat-card class="analytics-card">
+        <mat-card-header>
+            <div class="metric-avatar">
+                S
+            </div>
+            <mat-card-title style="margin-right: 10px;">Siparişler</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="metric-value">{{ data.currentMonthOrders }}</div>
+            <div class="metric-subtext">Bu Ay</div>
+        </mat-card-content>
+        <mat-card-content class="previous-month">
+            <div class="metric-value">{{ data.previousMonthOrders }}</div>
+            <div class="metric-subtext">Geçtiğimiz Ay</div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="analytics-card">
+        <mat-card-header>
+            <div class="metric-avatar">
+                K
+            </div>
+            <mat-card-title style="margin-right: 10px;">Kazanç</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="metric-value">{{ data.currentMonthEarnings | currency: 'TRY':'symbol' }}</div>
+            <div class="metric-subtext">Bu Ay</div>
+        </mat-card-content>
+        <mat-card-content class="previous-month">
+            <div class="metric-value">{{ data.previousMonthEarnings | currency: 'TRY':'symbol' }}</div>
+            <div class="metric-subtext">Geçtiğimiz Ay</div>
+        </mat-card-content>
+    </mat-card>
+
+
+</div>

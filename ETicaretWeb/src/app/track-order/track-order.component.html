@@ -1,0 +1,42 @@
+<form [formGroup]="searchOrderForm" class="search-form" (submit)="submitForm()">
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Aramak için takip numarası giriniz.</mat-label>
+        <input matInput formControlName="trackingId">
+        <button mat-button matSuffix color="primary" [disabled]="searchOrderForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
+
+<div class="order-details-container" *ngIf="order">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Sipariş Detayları</mat-card-title>
+        </mat-card-header>
+
+        <div class="order-detail">
+            Takip Numarası:
+            <strong>{{ order.trackingId }}</strong>
+        </div>
+        <div class="order-detail">
+            Kullanıcı Adı::
+            <strong>{{ order.userName }}</strong>
+        </div>
+        <div class="order-detail">
+            Adres:
+            <strong>{{ order.address }}</strong>
+        </div>
+        <div class="order-detail">
+            Fiyat:
+            <strong>{{ order.amount | currency: 'TRY':'symbol' }}</strong>
+        </div>
+        <div class="order-detail">
+            Durum:
+            <strong>{{ order.orderStatus }}</strong>
+        </div>
+        <div class="order-detail">
+            Tarih:
+            <strong>{{ order.date | date }}</strong>
+        </div>
+    </mat-card>
+</div>
